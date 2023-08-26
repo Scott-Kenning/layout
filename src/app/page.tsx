@@ -42,10 +42,8 @@ export default function Home() {
                                 dark ? "bg-[#18181A] shadow-xl" : "bg-white"
                             }`}
                         >
-                            <Flex className="justify-between items-center p-4 md:px-12">
-                                <Text size="6" weight="bold">
-                                    Your Logo
-                                </Text>
+                            <Flex className="justify-between items-center p-4 md:px-12 font-bold">
+                                <Text size="6">Your Logo</Text>
                                 <Flex gap="8" align="center">
                                     <Button
                                         variant="ghost"

@@ -27,7 +27,7 @@ export default function Hero({ heroConfig, onGetStartedClick }: HeroProps) {
                             Design your own website
                         </Text>
                         <Text size="5" className="my-4">
-                            Customize with the "Edit Theme" button in the top
+                            Customize with the Edit Theme button in the top
                             right corner.
                         </Text>
                         <Flex gap="4">
