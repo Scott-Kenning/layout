@@ -1,4 +1,3 @@
-"use client";
 import "@radix-ui/themes/styles.css";
 import { Theme, Button } from "@radix-ui/themes";
 import "./globals.css";
