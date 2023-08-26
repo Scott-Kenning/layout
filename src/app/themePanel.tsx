@@ -23,18 +23,23 @@ interface ThemeControlPanelProps {
     toggleDark: () => void;
     setAccentColor: React.Dispatch<React.SetStateAction<ThemeAccentColor>>;
     setHeroConfig: React.Dispatch<React.SetStateAction<1 | 2 | 3>>;
+    animateThemePanel: boolean;
 }
 
 export default function ThemeControlPanel({
     toggleDark,
     setAccentColor,
     setHeroConfig,
+    animateThemePanel,
 }: ThemeControlPanelProps) {
     return (
         <Dialog>
             <DialogTrigger>
-                <Button>Theme Panel</Button>
+                <Button className={animateThemePanel ? "animate-wiggle" : ""}>
+                    Edit Theme
+                </Button>
             </DialogTrigger>
+
             <DialogContent className="fixed top-10 right-10 flex items-center justify-center">
                 <Card size="4" className="z-[10000]">
                     <Flex direction="column" gap="4">

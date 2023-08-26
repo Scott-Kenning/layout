@@ -17,6 +17,17 @@ export default function Home() {
     const [dark, setDark] = useState(true);
     const [accentColor, setAccentColor] = useState<ThemeAccentColor>("iris");
     const [heroConfig, setHeroConfig] = useState<1 | 2 | 3>(1);
+    const [animateThemePanel, setAnimateThemePanel] = useState(false);
+
+    useEffect(() => {
+        if (animateThemePanel) {
+            const timer = setTimeout(() => {
+                setAnimateThemePanel(false);
+            }, 600); // Assuming the animation duration is 1 second
+
+            return () => clearTimeout(timer);
+        }
+    }, [animateThemePanel]);
 
     return (
         <html lang="en">
@@ -31,21 +42,34 @@ export default function Home() {
                                 dark ? "bg-[#18181A] shadow-xl" : "bg-white"
                             }`}
                         >
-                            <Flex className="justify-between items-center p-4 px-12">
+                            <Flex className="justify-between items-center p-4 md:px-12">
                                 <Text size="6" weight="bold">
-                                    Your Logo Here
+                                    Your Logo
                                 </Text>
                                 <Flex gap="8" align="center">
-                                    <Button variant="ghost" size="4">
+                                    <Button
+                                        variant="ghost"
+                                        size="4"
+                                        className="hidden md:inline-block"
+                                    >
                                         Source
                                     </Button>
-                                    <Button variant="ghost" size="4">
+                                    <Button
+                                        variant="ghost"
+                                        size="4"
+                                        className="hidden md:inline-block"
+                                    >
                                         Portfolio
                                     </Button>
-                                    <Button variant="ghost" size="4">
+                                    <Button
+                                        variant="ghost"
+                                        size="4"
+                                        className="hidden md:inline-block"
+                                    >
                                         Back to Top
                                     </Button>
                                     <ThemeControlPanel
+                                        animateThemePanel={animateThemePanel}
                                         toggleDark={() => setDark(!dark)}
                                         setAccentColor={setAccentColor}
                                         setHeroConfig={setHeroConfig}
@@ -58,10 +82,13 @@ export default function Home() {
                                 }
                             />
                         </div>
-                        <Flex direction="column" px="9" className="mt-16">
-                            <Hero heroConfig={heroConfig} />
-                            <Hero heroConfig={heroConfig} />
-                            <Hero heroConfig={heroConfig} />
+                        <Flex direction="column" className="md:px-24 mt-16">
+                            <Hero
+                                heroConfig={heroConfig}
+                                onGetStartedClick={() =>
+                                    setAnimateThemePanel(true)
+                                }
+                            />
                         </Flex>
                     </main>
                 </Theme>
